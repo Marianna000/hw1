@@ -19,6 +19,9 @@ class Student:
         else:
             return 'Ошибка'
 
+    def __str__(self):
+        return print(self.name, self.surname)
+
 
 class Mentor:
     def __init__(self, name, surname):
@@ -31,6 +34,12 @@ class Lecturer(Mentor):
     def __int__(self, name, surname):
         self.grades = {}
 
+    def __str__(self):
+        return print(self.name, self.surname)
+
+    def _class_ar(self):
+        pass
+
 
 class Reviewer(Mentor):
     def rate_hw(self, student, course, grade):
@@ -42,15 +51,19 @@ class Reviewer(Mentor):
         else:
             return 'Ошибка'
 
+    def __str__(self):
+        return print(self.name, self.surname)
 
-best_student = Student('Ruoy', 'Eman', 'your_gender')
-best_student.courses_in_progress += ['Python']
 
-cool_mentor = Mentor('Some', 'Buddy')
-cool_mentor.courses_attached += ['Python']
 
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
-
-print(best_student.grades)
+# best_student = Student('Ruoy', 'Eman', 'your_gender')
+# best_student.courses_in_progress += ['Python']
+#
+# cool_mentor = Mentor('Some', 'Buddy')
+# cool_mentor.courses_attached += ['Python']
+#
+# cool_mentor.rate_hw(best_student, 'Python', 10)
+# cool_mentor.rate_hw(best_student, 'Python', 10)
+# cool_mentor.rate_hw(best_student, 'Python', 10)
+#
+# print(best_student.grades)
