@@ -10,6 +10,10 @@ class Student:
     def add_courses(self, course_name):
         self.finished_courses.append(course_name)
 
+    def _class_ar(self):
+        list_sum = sum(self.grades)
+        list_avg = list_sum / len(self.grades)
+
     def rate_cl(self, lecturer, course, grade):
         if isinstance(lecturer, Lecturer) and course in self.courses_attached and course in lecturer.courses_in_progress:
             if course in lecturer.grades:
@@ -20,7 +24,7 @@ class Student:
             return 'Ошибка'
 
     def __str__(self):
-        return print(self.name, self.surname)
+        return print(self.name, self.surname, round(self._class_ar(),2), ''.join(self.courses_in_progress),''.join(self.finished_courses))
 
 
 class Mentor:
@@ -34,11 +38,12 @@ class Lecturer(Mentor):
     def __int__(self, name, surname):
         self.grades = {}
 
-    def __str__(self):
-        return print(self.name, self.surname)
-
     def _class_ar(self):
-        pass
+        list_sum = sum(self.grades)
+        list_avg = list_sum/len(self.grades)
+
+    def __str__(self):
+        return print(self.name, self.surname, round(self._class_ar(),2))
 
 
 class Reviewer(Mentor):
@@ -56,14 +61,3 @@ class Reviewer(Mentor):
 
 
 
-# best_student = Student('Ruoy', 'Eman', 'your_gender')
-# best_student.courses_in_progress += ['Python']
-#
-# cool_mentor = Mentor('Some', 'Buddy')
-# cool_mentor.courses_attached += ['Python']
-#
-# cool_mentor.rate_hw(best_student, 'Python', 10)
-# cool_mentor.rate_hw(best_student, 'Python', 10)
-# cool_mentor.rate_hw(best_student, 'Python', 10)
-#
-# print(best_student.grades)
