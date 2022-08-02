@@ -13,7 +13,8 @@ class Student:
                      f"Завершенные курсы: {self.finished_courses} ")
 
     #расчёт средней оценки написать функцию
-
+    def middle(self):
+        pass
 
 class Mentor:
     def __init__(self, name, surname):
@@ -36,14 +37,8 @@ class Lecturer(Mentor):
 
 
 class Reviewer(Mentor):
+
     def rate_hw(self, student, course, grade):
-        if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
-            if course in student.grades:
-                student.grades[course] += [grade]
-            else:
-                student.grades[course] = [grade]
-        else:
-            return 'Ошибка' def rate_hw(self, student, course, grade):
         if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
             if course in student.grades:
                 student.grades[course] += [grade]
@@ -69,6 +64,11 @@ student2.__str__()
 
 #проверяющие:
 reviewer1 = Reviewer("Van", "Helsing")
+reviewer1.courses_attached += ['Python']
+reviewer1.rate_hw(student1, 'Python', 6)
+reviewer1.rate_hw(student1, 'Python', 7)
+reviewer1.rate_hw(student1, 'Python', 10)
+print(student1.grades)
 reviewer1.__str__()
 
 #лекторы:
