@@ -7,13 +7,6 @@ class Student:
         self.courses_in_progress = []
         self.grades = {}
 
-    def add_courses(self, course_name):
-        self.finished_courses.append(course_name)
-
-    def _class_ar(self):
-        list_sum = sum(self.grades)
-        list_avg = list_sum / len(self.grades)
-
     def rate_cl(self, lecturer, course, grade):
         if isinstance(lecturer,
                       Lecturer) and course in self.courses_attached and course in lecturer.courses_in_progress:
@@ -25,7 +18,9 @@ class Student:
             return 'Ошибка'
 
     def __str__(self):
-        return print(f"Студенты: Имя:{self.name}, Фамилия:{self.surname}, Пол:{self.gender}")
+        return print(f"Студенты: Имя:{self.name}, Фамилия:{self.surname}, Пол:{self.gender}, "
+                     f"Средняя оценка за домашние задания:, Курсы в процессе изучения: {self.courses_in_progress}, "
+                     f"Завершенные курсы: {self.finished_courses} ")
 
 
 class Mentor:
@@ -59,16 +54,19 @@ class Reviewer(Mentor):
             return 'Ошибка'
 
     def __str__(self):
-        return print(f"Проверяющие: Имя:{self.name}, Фамилия:{self.surname}")
+        return print(f"Проверяющие: Имя:{self.name}, Фамилия:{self.surname}, Средняя оценка за лекции: ")
 
 
 # проверка
 
 # if __name__ == "__main__":
 student1 = Student("Alla", "Pugacheva", "women")
+student1.courses_in_progress += ['Python']
+student1.finished_courses += ['Java']
 student2 = Student("Igor", "Rurikovich", "men")
 student1.__str__()
 student2.__str__()
+
 
 reviewer1 = Reviewer("Van", "Helsing")
 reviewer1.__str__()
