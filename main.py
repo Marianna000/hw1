@@ -16,7 +16,7 @@ class Student:
         else:
             return 'Ошибка'
 
-    def middle_rate(self, name, course):
+    def middle(self, name, course):
         if isinstance(name, Student) and course in self.finished_courses and course in self.courses_in_progress:
             avg = sum(self.grades.values()) / len(self.grades.values())
             self.avg += avg
